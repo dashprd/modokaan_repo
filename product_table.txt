@@ -1,0 +1,15 @@
+product_table
+id
+product_name
+price
+unit
+category
+is_favorite
+star_rating(if is_favorite selected)
+primary_image
+other_images
+seller
+ingredients
+
+
+<a href="https://api.whatsapp.com/send?phone=+917008766586"><i class="fa fa-whatsapp" style="color:green"></i></a>

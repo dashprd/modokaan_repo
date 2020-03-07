@@ -1,8 +1,3 @@
-<?php 
-require_once('config.php');
-	$noOfSections=0;	
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -208,22 +203,7 @@ background:#151719;
   </div>
 </div>
 
-	<div id="placedOrderModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content col-md-8 col-lg-8 col-sm-12 col-xs-12 mb-12">
-    <div class="modal-header ">
-      <b style="color:white;font-weight:bold;font-size:125%;text-align:center">Placed Order Status</b>
-		<span class="closeModal">&times;</span>
-    </div>
-    <div class="modal-body">
-    	<div>
-			<p id="purchaseMsg" style='font-weight:bold;font-size:16px;'></p>
-		</div>
-    </div>    
-  </div>
-</div>
-
-<div class="container-fluid fixed-top" style="background-color:#f8f9fa;height:30px;width:100%;font-size: 12px;color:black;">
+	<div class="container-fluid fixed-top" style="background-color:#f8f9fa;height:30px;width:100%;font-size: 12px;color:black;">
 		
 		<p class="pull-right"><i class="fa fa-envelope" style="color:orange;margin-top:5px;"></i> <a href="mailto:support@modokaan.com">support@modokaan.com </a>&nbsp;&nbsp;<i class="fa fa-whatsapp" style="color:green"></i> <a href="tel:+91-7008766586">(+91)7008766586</a></p>
 	</div>
@@ -270,7 +250,7 @@ background:#151719;
 						  
 	       <div class="row justify-content-center mb-4">
                 <div class="col-md-12 col-lg-12 text-center" style="color: black;font-size: 22px;">
-						Odisha Authentic Foods By Odias
+						Authentic Odisha Foods By Odias
                 </div>
 			   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
 					<img src="assets/img/GSTIN_logo.png" style="height:70px">
@@ -288,19 +268,28 @@ background:#151719;
 			  <h2 class="lg-title mb-2 text-center" style="font-size: 20px;font-weight: bold;">Products Category</h2>
 		  </div>
 		  <div class="row mb-4">
-<?php
-	$sql="SELECT * from tblproducts_Category where active_status=1 order by 1";
-	$result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-		while($row = $result->fetch_assoc()) {
-			echo "<div class='col-md-4 col-lg-4 col-sm-6 col-xs-6 mb-4' id='".$row['PRODUCTS_CTGRY_CODE']."'>
-					  <div class='category' style='background: url(assets/img/white.png);'>
-						  <span>".$row['PRODUCTS_CTGRY_NAME']."</span>
-					  </div>								
-			  	</div>";
-		}
-	}
-?>		  </div>
+			  <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6 mb-4" id="cat_mixture">
+				  <div class="category" style="background: url(assets/img/white.png);">
+					  <span> ବାରମଜା <br>(Mixture/Namkeen)</span>
+				  </div>
+									
+			  </div>
+			  <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6 mb-4" id="cat_sweet">
+				  <div class="category" style="background: url(assets/img/white.png);">
+					  <span> ମିଠା <br> (Sweets) </span>
+				  </div>
+			  </div>
+			  <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6 mb-4" id="cat_other">
+				  <div class="category" style="background: url(assets/img/white.png);">
+					  <span> ଅନ୍ୟାନ୍ୟ <br>(Others)</span>
+				  </div>
+			  </div>
+			  <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6 mb-4" id="cat_books">
+				  <div class="category" style="background: url(assets/img/white.png);">
+					  <span>ବହି<br>( Books )</span>
+				  </div>
+			  </div>
+		  </div>
 		  <div class="row mb-4">
 			<div class="col-md-12 col-lg-12 col-sm-12">
 			  	<h2 class="lg-title mb-2 text-center" style="font-size: 20px;font-weight: bold;">Favourites</h2>
@@ -464,60 +453,412 @@ background:#151719;
 				<p  class="pull-right view_category" style="cursor:pointer;color:#FF5733;padding: 5px;border: 2px solid #FF5733;border-radius: 10px;margin-left: 5px;">View Categories</p>&nbsp;						  
 		  	</div>
 		  </div>
+		 
+            <div class="row mb-4" id="mixture_all">
+				<div class="col-md-12 col-lg-12 col-sm-12">                    
+                    <h2 class="lg-title mb-2 " style="font-size: 16px;font-weight: bold;">
+                        ବାରମଜା ( Mixture / Namkeen )
+                    </h2>                    
+                    <p >
+						<b style="color:green">Made in and flavors from :</b>
+						<b style="color:#0774d2"> Bhubaneswar, Cuttack, Puri, Berhampur, Khordha, Bhadrak, Baleswar </b>
+                    </p>                    
+        		</div> 
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6" id="plainmixture">
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+							ସାଧା ( Plain / Sadha )
+						</h2>                    
+						<img src="assets/img/2.png" style="height: 200px;">            
 
-<?php
-	$sql="SELECT * from tblPRODUCTS_Category where ACTIVE_status=1 order by 1";
-	$result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-		while($row = $result->fetch_assoc()) {
-		//$noOfDivs=$noOfDivs+1;
-            echo "<div class='row mb-4' id='".$row['PRODUCTS_CTGRY_CODE']."_all'>
-					<div class='col-md-12 col-lg-12 col-sm-12'>                    
-                    	<h2 class='lg-title mb-2 ' style='font-size: 16px;font-weight: bold;'>"
-                        	.$row['PRODUCTS_CTGRY_NAME']."</h2>
-						<p >
-							<b style='color:green'>Made in and flavors from :</b>
-							<b style='color:#0774d2'> Bhubaneswar, Cuttack, Puri, Berhampur, Khordha, Bhadrak, Baleswar </b>
-						</p>                    
-        			</div>";
+                       <h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<!--<p style="color:green"><b>In Stock</b></p>-->
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Plain Mixture : 500 Gms : Rs. 90/-');">
+						
+						<br><br>
+					</div>
+                </div>
+
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6" id="spicymixture">
+				    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+                	<h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+                        ରାଗ ଲଙ୍କା ( Spicy Chilly )
+                    </h2>                    
+						<img src="assets/img/5.png" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Spicy Mixture : 500 Gms : Rs. 90/-');"><br><br>						
+                    </div>
+                </div>
 				
-			$sql="SELECT * from tblPRODUCTS where PRODUCTS_CTGRY_ID=".$row['PRODUCTS_CTGRY_ID'];
-			$result1 = $conn->query($sql);
-    		if ($result1->num_rows > 0) {
-				while($row1 = $result1->fetch_assoc()) {
-					echo"<div class='col-md-3 col-lg-3 col-sm-6 col-xs-6' id='PRODUCT_".$row1['PRODUCT_ID']."'>
-                    		<div class='pricing-block' style='padding: 10px;background-image: url(assets/img/white.png);'>
-								<h2 class='lg-title mb-2 ' style='font-size: 14px;font-weight: bold;'>"
-									.$row1['PRODUCT_NAME']."</h2>                    
-								<img src='assets/img/".$row1['PRODUCT_IMAGES']."' style='height: 200px;'>            
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6" id="spicymixture">
+				    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+                	<h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+                        ରାଗ ଗୋଲ ମରିଚ ( Spicy Pepper )
+                    </h2>                    
+						<img src="assets/img/5.png" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Spicy Mixture Pepper : 500 Gms : Rs. 90/-');"><br><br>						
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6" id="#khatamithamixture">
+					<div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+                        <h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+                        	ଖଟା ମିଠା ( Khata Mitha )
+                    	</h2>                    
+						<img src="assets/img/Khata_Mitha.jpg" style="height: 200px;">            
+                        <h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Khata Mitha Mixture : 500 Gms : Rs. 90/-');"><br><br>
+                    </div>
+                </div>                
+                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					<div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+                        	ସାଧା ସେଭ ( Plain Sev )
+                    	</h2>                    
+                        <img src="assets/img/Plain_Sev.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Plain Sev : 500 Gms : Rs. 90/-');"><br><br>
+                    </div>
+                </div>
+				
+                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					<div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						 <h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+                        	ଚୁଡା ବାରମଜା ( Chuda Mixture )
+                    	</h2>                    
+                        <img src="assets/img/chuda_mixture.jpg" style="height: 200px;">            
 
-							   <h3 class='price my-3 ' style='font-size:30px'>
-									<small> Rs. </small>".$row1['PRICE']; 
-					if($row['PRODUCTS_CTGRY_ID'] != 4)
-					{ 
-						echo " <small> / ".$row1['WEIGHT']." Gms. </small>"; 
-					} 
-					echo "<br>
-									<small> ( Inclusive of all taxes )</small>
-								</h3>
-								<input name='submit' type='button' class='btn btn-primary btn-lg'
-									   value='Add To Cart' onclick = 'AddToCart(".$row1['PRODUCT_ID'].");'>
-									<br><br>
-							</div>
-                		</div>";
-				}
-			}
-			else
-			{
-				echo 	"<div class='col-md-3 col-lg-3 col-sm-6 col-xs-6'>
-							<br><br>
-							<h4 style='text-align:center;'> Coming soon...! <br> Currently No products has been registerd under this category.</h4>			      		</div>";
-			}
-    	echo "</div>";		
-	}
-}
-?>
+                        <h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Chuda Mixture : 500 Gms : Rs. 90/-');"><br><br>
+                    </div>
+                </div>                
+				
+                <!--<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+                    
+					<div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+							ଭଜା ଚୁଡା ବାରମଜା ( Roasted )
+						</h2>                    
+						<img src="assets/img/Roasted_Chuda_Mixture.jpg" style="height: 200px;">            
+
+                       <h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>85 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Roasted Chuda Mixture : 500 Gms : Rs. 85/-');"><br><br>
+					</div>
+                </div>
+            </div> -->           
+			 <!--<div class="row mb-4">
+				                
+            </div>  -->  
+			  
+			 
+			 <div class="row mb-4" id="sweet_all">
+				 <div class="col-md-12 col-lg-12 col-sm-12 ">                    
+                    <h2 class="lg-title mb-2 " style="font-size: 16px;font-weight: bold;">
+                        ସୁସ୍ୱାଦୁ ମିଠା ( Declicious Sweets )
+                    </h2>                    
+                    <p >
+						<b style="color:green">Made in and flavors from :</b>
+						<b style="color:#0774d2"> Puri, Salepur, Bhubaneswar</b>
+                    </p>                    
+        		</div>
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							ଫେଣି ଗଜା ( Pheni Gaja Sweet )
+						</h2><br>                
+						<img src="assets/img/Pheni.jpg" style="height: 200px;top-margin:20px">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>85 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Pheni Sweet : 500 Gms : Rs. 85/-');"><br><br>
+                    </div>
+                </div>
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							ଫେଣି ଗଜା ଦେଶୀ ଗୁଆ ଘିଅ ( Pheni Gaja Sweet Made of Pure Ghee)
+						</h2><br>                
+						<img src="assets/img/Pheni.jpg" style="height: 200px;top-margin:20px">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>200 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Pheni Sweet Deshi Ghee : 500 Gms : Rs. 200/-');"><br><br>
+                    </div>
+                </div>
+				 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							ଛେନା ପୋଡ଼ ( Chhena Phoda Special From Puri)
+						</h2><br>                
+						<img src="assets/img/chhenapoda.jpg" style="height: 200px;top-margin:20px">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>180 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Chhena Poda Special : 500 Gms : Rs. 180/-');"><br><br>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					 
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						 <h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							ଫେଣି ଗଜା ସାଧା ( Pheni Gaja Sugar Less )
+						</h2><br>                
+						<img src="assets/img/Pheni_Plain.jpg" style="height: 200px;">            
+
+                        <h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>105 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Pheni Plain : 500 Gms : Rs. 105/-');"><br><br>
+					
+                    </div>
+                </div>
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+				    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title mb-2" style="font-size: 14px;font-weight: bold;color:black">
+							ସାଲେପୁର ବିକଳାନନ୍ଦ ରସଗୋଲା <br>(Salepur Bikalananda Kar's Brown Rasagola)
+						</h2>
+						<img src="assets/img/rasagola.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>240<small> / 1 Kg</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Bikalananda Kars Rasagola: 1000 Gms : Rs. 240/-');"><br>
+						
+                    </div>
+                </div> 
+		  </div>
+				 
+			 
+			 <div class="row mb-4" id="other_all">
+				 <div class="col-md-12 col-lg-12 col-sm-12 ">                    
+                    <h2 class="lg-title mb-2 " style="font-size: 16px;font-weight: bold;">
+                        ଅନ୍ୟ ଦରକାରୀ ( Other Items )
+                    </h2>                    
+                    <p >
+						<b style="color:green">Made in and flavors from :</b>
+						<b style="color:#0774d2"> Bhubaneswar,Berhampur </b>
+                    </p>                    
+        		</div> 
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							ମହାକାଳୀ ଛତୁଆ ( Roasted Flours Mix Of Mahakali From Bhabaneswar )
+						</h2>
+						<img src="assets/img/Chhatua.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>60 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Chhatua Mix : 500 Gms : Rs. 60/-');"><br>
+						<a style="cursor: pointer;text-align: right;color: orange;font-weight: bold;" data-toggle="collapse" data-target="#description_chhatua" > View More..</a>
+						<div id="description_chhatua" class="collapse" style="text-align:left;font-size:12px;color:black;">
+							<ul><b>Ingredients:</b>
+								<li> Roasted Mix Floars of (Wheat, Chana Daal, Cashew, Almonds,Cardamon, Milk Powder) and added sugar for test</li>							<b>Features:</b>
+								<li> Famous Breakfast dish of Odias</li>
+								<li> 2 to 4 table spoons with 1 glas of water/milk/curd keeps hunger away for 2 hours</li>
+							</ul>                    
+						</div>  
+                    </div>
+                </div>
+				 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							କାଜୁ ବାଦାମ <br>(Cashew from Berhampur)
+						</h2>
+						<img src="assets/img/cashew.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>225 <small> / 250 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Cashew From Berhumpur : 250 Gms : Rs. 225/-');"><br>						
+                    </div>
+                </div>
+				  <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							ପିସ୍ତା ବାଦାମ <br>(Almond from Berhampur)
+						</h2>
+						<img src="assets/img/almond.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>240 <small> / 250 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Almond From Berhumpur : 250 Gms : Rs. 240/-');"><br>						
+                    </div>
+                </div>
+				 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+								ବିରି ବଡ଼ି <br>(Badi from Berhampur)
+						</h2>
+						<img src="assets/img/biribadi.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>90 <small> / 500 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Biri Badi From Berhumpur : 500 Gms : Rs. 90/-');"><br>						
+                    </div>
+                </div>
+				 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+								ଲିଆ ବଡ଼ି <br>(Lia Badi from Berhampur)
+						</h2>
+						<img src="assets/img/liabadi.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>30 <small> / 200 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Lia Badi From Berhumpur : 200 Gms : Rs. 30/-');"><br>						
+                    </div>
+                </div>
+				 
+				 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+								ରାଶି ପାମ୍ପଡ <br>(Raashi Pampada from Berhampur)
+						</h2>
+						<img src="assets/img/rashipampada.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>60 <small> / 250 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Lia Badi From Berhumpur : 250 Gms : Rs. 60/-');"><br>						
+                    </div>
+                </div>
+				 <!--<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+					<div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="md-title" style="font-size: 14px;font-weight: bold;color:black;">
+							<b style="color:#0774d2;">MAAHI</b> Biscuit-Sugar free (Thekua)
+						</h2>						
+						<img src="assets/img/Mahi_Biscuits_SugarFree.jpg" style="height: 200px;">            
+						
+						<h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>85<small> / 200 Gms.</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Mahi Biscuit-Sugar Free (Thekua): 200 Gms : Rs. 85/-');"><br>
+						
+						<a style="cursor: pointer;text-align: right;color: orange;font-weight: bold;" data-toggle="collapse" data-target="#description_mahibiscuitsugarfree" > View More..</a>
+						<div id="description_mahibiscuitsugarfree" class="collapse" style="text-align:left;font-size:12px;color:black;">
+							<ul><b>Ingredients:</b>
+								<li> Wheat, Deshee Cow Ghee, Cashew, Cocunut, Almonds,Raisin, Dry Khajur,Cardamon,Fennel Seeds,Sugar Free</li>
+								<b>Features:</b>
+								<li> <b>Knonw as Thekua</b> (The famous and Popular Sweet Dish of Bihar And U.P.)</li>
+								<li> 1 Biscuit Contains 2 Rotis amounts of Protein and calories</li>
+								<li> 2 Biscuit 1 Glass of water keeps away feeling hungry for 3hours</li>
+								<b style="color:#0774d2;">MFG By: MAAHI <br> (Badbil, Odisha) </b>                 
+							</ul>                    
+						</div>  
+
+                    </div>
+                </div>-->
+			</div>
+		  	<div class="row mb-4" id="books_all">
+				<div class="col-md-12 col-lg-12 col-sm-12">                    
+                    <h2 class="lg-title mb-2 " style="font-size: 16px;font-weight: bold;">
+                        ବହି ( Books )
+                    </h2>                    
+                    <p >
+						<b style="color:green">Odia Books written by Odia writers</b>
+						<b style="color:#0774d2"> From all over the world </b>
+                    </p>                    
+        		</div> 
+				<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6" id="plainmixture">
+                    <div class="pricing-block" style="padding: 10px;background-image: url(assets/img/white.png);">
+						<h2 class="lg-title mb-2 " style="font-size: 14px;font-weight: bold;">
+							ମନ କଥା ( Mana Kathaa )
+						</h2>                    
+						<img src="assets/img/book-manakathaa.gif" style="height: 200px;">            
+
+                       <h3 class="price my-3 " style="font-size:30px">
+                            <small>Rs.</small>125 <small> / 1 Piece</small><br>
+							<small> ( Inclusive of all taxes )</small>
+                        </h3>
+						<!--<p style="color:green"><b>In Stock</b></p>-->
+						<input name="submit" type="button" class="btn btn-primary btn-lg" 
+							   value="Add To Cart" onclick = "Add('Book Manakathaa : 120 Gms : Rs. 125/-');"><br>
+						<a style="cursor: pointer;text-align: right;color: orange;font-weight: bold;" data-toggle="collapse" data-target="#description_book-manakathaa" > View More..</a>
+						<div id="description_book-manakathaa" class="collapse" style="text-align:left;font-size:12px;color:black;">
+							<ul><b>Writer : Dr. Antarjita Nayak</b>
+								<li> PHD Scholaar from Rourkela NIIT</li>	
+								<b>About the Book :</b>
+								<li> This book is about her experiences of life in her words</li>
+								<li> The focus is about sensitive social issues of our daily life </li>
+							</ul>                    
+						</div>  						
+					</div>
+                </div>
+			</div>    
+            
 	  </div>
+		  
     </section>
 
 	<!-- Purchase
@@ -568,35 +909,9 @@ background:#151719;
 								</div>
 							</div>
 							<div class="col-lg-12 justify-content-center" style="font-size:14px;color:white;background-color:#0774d2;">
-									<b>Billing/Shiping address details :</b>
+							<b>Billing/Shiping address details :</b>
 							</div>
-							<div class="col-lg-12 justify-content-center" style="font-size:12px;font-weight:bold;">
-								<b>Please Select Delivery Type :</b>
-							</div>
-							<div class="col-lg-6 col-md-3 col-sm-3">
-								<div class="form-group">                                    
-									<input type="radio" id="deliveryTypeHome" name="deliveryType"  value="Delivery to your Door Step" checked onclick="disableDeliveryDate();"> Delivery to your Door Step
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-3 col-sm-3">
-								<div class="form-group">                                    
-									<input type="radio" id="deliveryTypeStation" name="deliveryType"  value="Delivery Near BBSR Railway Station" onclick="enableDeliveryDate();"> Delivery Near BBSR Railway Station
-								</div>                               
-							</div>
-							<div id="deliveryDateDiv" class="col-lg-12" style="font-size:14px;color:black;margin-top:10px;">
-								<table>
-									<tr>
-										<td style="width:60%;">Delivery Date</td>
-										<td style="width:40%;text-align:right">
-                                    	<input type="date" name="deliveryDate" id="deliveryDate" class="form-control" onchange="checkValidDeliveryDate();">                                			
-									</tr>
-								</table>
-                            </div>
-							<div class="col-lg-12">
-                                <div class="form-group">
-                                    <input type="tel" pattern="[0-9]{10}" maxlength="10" name="pmobile" id="pmobile" class="form-control" placeholder="Mobile No *" required="required">
-                                </div>
-                            </div>
+							<br>
 							<div class="col-lg-12" style="font-size:14px;color:black;margin-top:10px;">
 								<div class="form-group">
                                     <input type="text" name="pname" id="pname" class="form-control" placeholder="Your Name *" required="required">
@@ -606,22 +921,22 @@ background:#151719;
                                 <div class="form-group">
                                     <input type="email" name="pemail" id="pemail" class="form-control" placeholder="Email Id *" required="required">
                                 </div>
-                            </div>							 
+                            </div>
+							 <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input type="tel" pattern="[0-9]{10}" maxlength="10" name="pmobile" id="pmobile" class="form-control" placeholder="Mobile No *" required="required">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="baddress" id="baddress" cols="30" rows="4" class="form-control" placeholder="Billing Address *" required="required"></textarea>
+                                    <textarea name="paddress" id="paddress" cols="30" rows="4" class="form-control" placeholder="Billing / Shipping Address *" required="required"></textarea>
                                 </div>
                             </div>
 							<div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="saddress" id="saddress" cols="30" rows="4" class="form-control" placeholder="Shipping Address *" required="required"></textarea>
-                                </div>
-                            </div>
-							<div class="col-lg-12">
-                                <div class="form-group">
-                                    <input type="pin" pattern="[0-9]{6}" maxlength="6" name="ppin" id="ppin" class="form-control" placeholder="Shipping Pin No *" required="required" >
+                                    <input type="pin" pattern="[0-9]{6}" maxlength="6" name="ppin" id="ppin" class="form-control" placeholder="Pin No *" required="required" onchange = "calculatePrices(0,0);">
                                 </div>
                             </div>
 							<div class="col-lg-12">
@@ -684,14 +999,14 @@ background:#151719;
 									<p class="pt-3" id="errorMessage" style="color:rgb(150, 0, 0);font-weight:bold;font-size:12px;">Please Add some products to cart to place order..!</p>
 								</div>
                             </div>
-							<!--<div class="col-lg-12">
+							<div class="col-lg-12">
 								<div>
 									<p id="purchaseMsg" class="pt-3"></p>
 								</div>
-							</div>	-->
+							</div>	
 							<div class="col-lg-12">
                                 <div class="submit text-center">
-									<input id="psubmit" name="psubmit" type="submit" class="btn btn-primary btn-lg pull-right" value="Place Order"><br>
+									<input name="psubmit" type="submit" class="btn btn-primary btn-lg pull-right" value="Place Order"><br>
                                  </div>
                             </div>
 							<div style="display:none;">
@@ -781,7 +1096,6 @@ background:#151719;
     <!-- Global JS -->
     <script src="assets/libs/jquery/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="assets/js/validations.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="assets/js/jquery.easing.min.js"></script>
@@ -793,63 +1107,21 @@ background:#151719;
 	$(".toggleSidebar").on('click', function(){
 		document.getElementById("sidebar").classList.toggle('active');	
 	});
-	/*"#pmobile").on('keyup', function(){
-		alert("testing");
+	$("#pmobile").on('keyup', function(){
+		//alert("testing");
 		//mobile_number_check();
 		
-	});*/
-	$("#pmobile").on('change', function(){
+	});
+	/*$("#pmobile").on('change', function(){
 		//alert("working");
 		mobile_number_check();
-	});
-	
-	$("#ppin").on('change', function(){
-		//alert("working");
-		pin_code_check();
-	});	
-	function pin_code_check(){
-		
-		var pin_code = $("#ppin").val();
-		
-		if(pin_code.length==6)
-		{
-			var dataString = 'pincode=' + pin_code;
-			$.ajax({
-				type: "POST",
-				url: "pin_code_detail.php",
-				data: dataString,
-            	success: function(response)
-            	{
-					console.log(response);
-					var result = JSON.parse(response);
-					
-					if(parseInt(result['count']) <= 0)
-					{
-						$("#purchaseMsg").text("We are very sorry to say: \n\n Currenty we are not providing services to your address..!\n\n Kindly contact our Customer care to avail our services in your aread...!");
-						$('#placedOrderModal').show();
-						
-						document.getElementById("ppin").value="";
-						document.getElementById("ppin").focus();
-						document.getElementById("deliverycharges").value="0";
-						
-						verifyPinResult=false;
-					}
-					else
-					{
-						verifyPinResult=true;
-						calculatePrices(0,0);
-					}					
-				}
-			});	
-		}
-	}
-		
+	});*/
 	$(".view_all_product, .product_all").on('click', function(){		
 		$("#productList").show();
-		$("#cat_mixture_all").show();
-		$("#cat_sweet_all").show();
-		$("#cat_other_all").show();
-		$("#cat_books_all").show();
+		$("#mixture_all").show();
+		$("#sweet_all").show();
+		$("#other_all").show();
+		$("#books_all").show();
 		$("#view_all_product").hide();
 		$("#productCategory").hide();
 		$("#purchase").hide();
@@ -871,10 +1143,10 @@ background:#151719;
 	});
 	$("#cat_mixture").on('click', function(){
 		$("#productList").show();
-		$("#cat_mixture_all").show();
-		$("#cat_sweet_all").hide();
-		$("#cat_other_all").hide();
-		$("#cat_books_all").hide();
+		$("#mixture_all").show();
+		$("#sweet_all").hide();
+		$("#other_all").hide();
+		$("#books_all").hide();
 		$("#productCategory").hide();		
 		$("#view_all_product").show();
 		$("#view_category").show();
@@ -883,21 +1155,22 @@ background:#151719;
 	});	
 	$("#cat_sweet").on('click', function(){
 		$("#productList").show();
-		$("#cat_mixture_all").hide();
-		$("#cat_sweet_all").show();
-		$("#cat_other_all").hide();
-		$("#cat_books_all").hide();
+		$("#mixture_all").hide();
+		$("#sweet_all").show();
+		$("#other_all").hide();
+		$("#books_all").hide();
 		$("#productCategory").hide();		
 		$("#view_all_product").show();
 		$("#view_category").show();
+		
 		$("#view_shopping").show();
 	});
 	$("#cat_other").on('click', function(){
 		$("#productList").show();
-		$("#cat_mixture_all").hide();
-		$("#cat_sweet_all").hide();
-		$("#cat_other_all").show();
-		$("#cat_books_all").hide();
+		$("#mixture_all").hide();
+		$("#sweet_all").hide();
+		$("#other_all").show();
+		$("#books_all").hide();
 		$("#productCategory").hide();		
 		$("#view_all_product").show();
 		$("#view_category").show();
@@ -906,13 +1179,14 @@ background:#151719;
 	});
 	$("#cat_books").on('click', function(){
 		$("#productList").show();
-		$("#cat_mixture_all").hide();
-		$("#cat_sweet_all").hide();
-		$("#cat_other_all").hide();
-		$("#cat_books_all").show();
+		$("#mixture_all").hide();
+		$("#sweet_all").hide();
+		$("#other_all").hide();
+		$("#books_all").show();
 		$("#productCategory").hide();		
 		$("#view_all_product").show();
-		$("#view_category").show();		
+		$("#view_category").show();
+		
 		$("#view_shopping").show();
 	});
 	$("#cart, .view_shopping, .placeordermenu").on('click', function(){		
@@ -926,7 +1200,6 @@ background:#151719;
 			$("#view_all_product").show();
 			$("#view_category").show();
 			$("#view_shopping").hide();		
-			disableDeliveryDate();
 		}
 		else
 		{
@@ -978,19 +1251,11 @@ background:#151719;
 	});
 
 	$('#purchaseForm').on('submit', function(e) {
-			//$("#purchaseMsg").text("Mail Sending, please wait ..");
-		
-			var varDeliveryDate = document.getElementById('deliveryDate');
-			varDeliveryDate.disabled=false;
-	
+			$("#purchaseMsg").text("Mail Sending, please wait ..");
 			var form = $(this); 
 			var post_url = form.attr('action'); 
 			var post_data = form.serialize(); //Serialized the form data for process.php
-			
 			$(".contact__form").css("pointer-events","none");
-			
-			console.log(post_data);
-		
 			$.ajax({
 				type: 'POST',
 				url: 'smtp/purchase_email.php', // Your form script
@@ -999,32 +1264,17 @@ background:#151719;
 					$(".purchase_form").css("pointer-events","auto");
 					if(msg == 'success')
 					{
-						$("#purchaseMsg").text("Order Has been placed successfully....!\n\nPlease check your email Inbox for order details.");
 						
-						//$("#purchaseMsg").text("Kindly check your email inbox for order details..!");
-						//$("#purchaseMsg").css("color","green");
-						//setTimeout(function(){ $('#purchaseMsg').fadeOut() }, 10000);						
-						
-						$('#placedOrderModal').show();
-						
-						$("#productList").hide();
-						$("#productCategory").show();
-						$("#purchase").hide();
-						$("#purchaseMobile").hide();
-						$("#view_all_product").show();
-						$("#view_category").hide();
-						$("#view_shopping").show();
+						$("#purchaseMsg").text("Kindly check your email inbox for order details..!");
+						$("#purchaseMsg").css("color","green");
+						setTimeout(function(){ $('#purchaseMsg').fadeOut() }, 10000);						
 						
 					}
 					else
 					{
-						$("#purchaseMsg").text("There is some technial issue during Order submit....!\n\n Please contact to your customer care.");
-						$('#placedOrderModal').show();
-
-						//$("#purchaseMsg").text("Message Sending fail");
-						//$("#purchaseMsg").css("color","red");
-						//setTimeout(function(){ $('#purchaseMsg').fadeOut() }, 10000);
-											
+						$("#purchaseMsg").text("Message Sending fail");
+						$("#purchaseMsg").css("color","red");
+						setTimeout(function(){ $('#purchaseMsg').fadeOut() }, 10000);
 					}
 				}
 			});
@@ -1051,27 +1301,19 @@ background:#151719;
 		
 		$("#cart").find("sup").html((0).toString());
 		
-		document.getElementById('deliveryTypeHome').checked = true;
-	
 	}
-
 
 // Get the modal
 var newsModal = document.getElementById('newsModal');
 var cartModal = document.getElementById('cartModal');
-var placedOrderModal = document.getElementById('placedOrderModal');
-var deliveryDateDiv = document.getElementById('deliveryDate');
-		
+
 // Get the <span> element that closes the modal
 var newsSpan = document.getElementsByClassName("closeModal")[0];
 var cartSpan = document.getElementsByClassName("closeModal")[1];
-var placedOrderSpan = document.getElementsByClassName("closeModal")[2];
 
 newsModal.style.display = "none";
 cartModal.style.display = "none";
-placedOrderModal.style.display="none";
-disableDeliveryDate();
-		
+
 // When the user clicks on <span> (x), close the modal
 newsSpan.onclick = function() {
   newsModal.style.display = "none";
@@ -1081,76 +1323,6 @@ cartSpan.onclick = function() {
   cartModal.style.display = "none";
 }
 
-
-placedOrderSpan.onclick = function() {
-	placedOrderModal.style.display = "none";
-}
-
-
-function enableDeliveryDate()
-{
-	var varDeliveryDate = document.getElementById('deliveryDate');
-
-	document.getElementById('deliveryDate').focus();
-	
-	var validDate = new Date();
-	
-	validDate.setDate(validDate.getDate()+4);
-	
-	document.getElementById('deliveryDate').valueAsDate = validDate;
-	
-	varDeliveryDate.disabled=false;
-	
-	document.getElementById("saddress").value="Near Bhubaneswar Railway Station, Master Canteen, Bhubaneswar, Odisha";
-	document.getElementById("saddress").readOnly=true;
-	
-	document.getElementById("ppin").value="751001";
-	document.getElementById("ppin").readOnly=true;
-	
-	
-	calculatePrices(0,0);
-}
-		
-function disableDeliveryDate()
-{
-	var varDeliveryDate = document.getElementById('deliveryDate');
-	
-	var validDate = new Date();
-	
-	validDate.setDate(validDate.getDate()+5);
-	
-	document.getElementById('deliveryDate').valueAsDate = validDate;
-	varDeliveryDate.disabled=true;
-	
-	document.getElementById("saddress").value="";
-	document.getElementById("saddress").readOnly=false;
-	
-	document.getElementById("ppin").value="";
-	document.getElementById("ppin").readOnly=false;
-	calculatePrices(0,0);
-	
-}
-		
-function checkValidDeliveryDate()
-{
-	var DeliveryDate = new Date(document.getElementById('deliveryDate').value);
-	var validDate = new Date();
-	
-	validDate.setDate(validDate.getDate() + 4);
-	
-	if(DeliveryDate < validDate)
-	{
-		
-		$("#purchaseMsg").text("Please select delivery date value dated [ " + validDate.getDate() + "-" + getMonthName(validDate.getMonth()) + "-" + 		validDate.getFullYear() + " ] onwards .....!");
-						
-		$('#placedOrderModal').show();
-		
-		document.getElementById('deliveryDate').valueAsDate = validDate;
-		document.getElementById('deliveryDate').focus();		
-		
-	}
-	
-}		
 // When the user clicks anywhere outside of the modal, close it
 /*window.onclick = function(event) {
   if (event.target == newsModal ) {
@@ -1164,26 +1336,8 @@ window.onclick = function(event) {
   }
 	
 }*/
-		
-function getMonthName(monthNo)
-{
-	var month = new Array();
-	month[0] = "Jan";
-	month[1] = "Feb";
-	month[2] = "Mar";
-	month[3] = "Apr";
-	month[4] = "May";
-	month[5] = "Jun";
-	month[6] = "Jul";
-	month[7] = "Aug";
-	month[8] = "Sep";
-	month[9] = "Oct";
-	month[10] = "Nov";
-	month[11] = "Dec";
-	
-	return month[monthNo];
-
-}
 </script>
+
+	<script src="assets/js/validations.js"></script>
 	</body>
 </html>

@@ -159,7 +159,7 @@ background:#151719;
 	       <div class="row justify-content-center mb-4">
                 <div class="col-md-12 col-lg-12 text-center">
 					<h1 class="text-center mb-4 display-4 " style="color: black;font-size: 25px;">
-						Odisha Authentic Foods By Odias
+						Authentic Odisha Foods By Odias
 					</h1>
                 </div>
             </div>
